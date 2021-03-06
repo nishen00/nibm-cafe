@@ -14,9 +14,10 @@ class foodsectioncontroller: UIViewController {
     @IBOutlet weak var tableview: UITableView!
     
    
+    @IBOutlet weak var cartview: UIView!
     
     @IBOutlet weak var ordersavebtn: UIButton!
-    @IBOutlet weak var cartview: UIView!
+   
     
     
     @IBOutlet weak var columnview: UIView!
@@ -380,7 +381,11 @@ class foodsectioncontroller: UIViewController {
         }
         else
         {
-            self.showToast(message:"please select food item first!!", font: .systemFont(ofSize: 12.0))
+            let alert = UIAlertController(title: "Order failure", message: "Please add food item first", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+                 })
+                 alert.addAction(ok)
+            self.present(alert, animated: true)
         }
         }
     

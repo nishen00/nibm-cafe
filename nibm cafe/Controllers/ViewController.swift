@@ -80,9 +80,17 @@ class ViewController: UIViewController {
             let email = Email.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let pass = password.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
+            if email.isEmail
+            {
+            
             Auth.auth().createUser(withEmail: email, password: pass) { (result, err) in
                 if err != nil {
-                    self.showToast(message:"Registrasion fail", font: .systemFont(ofSize: 12.0))
+//                    self.showToast(message:"Registrasion fail", font: .systemFont(ofSize: 12.0))
+                    let alert = UIAlertController(title: "Registration failure", message: "User already Exist", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+                         })
+                         alert.addAction(ok)
+                    self.present(alert, animated: true)
                 }
                 else
                 {
@@ -96,7 +104,8 @@ class ViewController: UIViewController {
                     ref.addDocument(data: ["phone" :phone,"UID" : result!.user.uid , "image":imagename!,"email": result!.user.email!]) { (erro) in
                         if erro != nil
                         {
-                            self.showToast(message:"Registration error ", font: .systemFont(ofSize: 12.0))
+//                            self.showToast(message:"Registration error ", font: .systemFont(ofSize: 12.0))
+                            
                         }
                         else
                         {
@@ -111,16 +120,41 @@ class ViewController: UIViewController {
                     }
                 }
             }
+            }
+            else
+            {
+                let alert = UIAlertController(title: "Registration failure", message: "Invalid Email", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+                    self.Email.layer.borderWidth = 1.0
+                    self.Email.layer.borderColor = UIColor.red.cgColor
+                     })
+                     alert.addAction(ok)
+                self.present(alert, animated: true)
+            }
         }
         else
         {
-        
-        self.showToast(message:"requeied field empty!!", font: .systemFont(ofSize: 12.0))
+            let alert = UIAlertController(title: "Registration failure", message: "Required field empty", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+                 })
+                 alert.addAction(ok)
+            self.present(alert, animated: true)
         }
 
         
     }
     
 
+}
+
+extension String {
+    private static let __firstpart = "[A-Z0-9a-z]([A-Z0-9a-z._%+-]{0,30}[A-Z0-9a-z])?"
+    private static let __serverpart = "([A-Z0-9a-z]([A-Z0-9a-z-]{0,30}[A-Z0-9a-z])?\\.){1,5}"
+    private static let __emailRegex = __firstpart + "@" + __serverpart + "[A-Za-z]{2,6}"
+
+    public var isEmail: Bool {
+        let predicate = NSPredicate(format: "SELF MATCHES %@", type(of:self).__emailRegex)
+        return predicate.evaluate(with: self)
+    }
 }
 

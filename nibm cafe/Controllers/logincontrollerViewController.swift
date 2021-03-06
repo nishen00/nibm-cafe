@@ -75,13 +75,20 @@ class logincontrollerViewController: UIViewController {
         
         if validation() != ""
         {
+            
             let emailget = email.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let passwordget = password.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+           
             
             Auth.auth().signIn(withEmail: emailget, password: passwordget) { (Result, Error) in
                 if Error != nil
                 {
-                    self.showToast(message:"invalid Authentication", font: .systemFont(ofSize: 12.0))
+                    let alert = UIAlertController(title: "Invalid Authentication", message: "Invalid UserName Password", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+                         })
+                         alert.addAction(ok)
+                    self.present(alert, animated: true)
                 }
                 else
                 {
@@ -96,14 +103,22 @@ class logincontrollerViewController: UIViewController {
             }
             
             
+            
         }
         else
         {
-            self.showToast(message:"requeied field empty!!", font: .systemFont(ofSize: 12.0))
+            let alert = UIAlertController(title: "Authetication Failure", message: "Required field empty", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+                 })
+                 alert.addAction(ok)
+            self.present(alert, animated: true)
         }
         
     }
     
+    
      
 
 }
+
+
