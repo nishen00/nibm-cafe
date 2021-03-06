@@ -16,7 +16,7 @@ class ordercontroller: UIViewController {
     @IBOutlet weak var content: UIView!
     let db = Firestore.firestore()
     var userId :String = ""
-    var test : String?
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
