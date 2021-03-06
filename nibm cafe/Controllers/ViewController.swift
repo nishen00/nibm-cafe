@@ -89,9 +89,11 @@ class ViewController: UIViewController {
                     let db = Firestore.firestore()
                   
                     let ref =  db.collection("User")
-                   
                     
-                   ref.addDocument(data: ["phone" :phone,"UID" : result!.user.uid ]) { (erro) in
+                    let imagename : String? = (result?.user.uid)! + ".png"
+                    
+                    
+                    ref.addDocument(data: ["phone" :phone,"UID" : result!.user.uid , "image":imagename!,"email": result!.user.email!]) { (erro) in
                         if erro != nil
                         {
                             self.showToast(message:"Registration error ", font: .systemFont(ofSize: 12.0))

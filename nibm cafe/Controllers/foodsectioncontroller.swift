@@ -335,7 +335,7 @@ class foodsectioncontroller: UIViewController {
             
             
         
-            ref.setData(["userId":userId,"docid": ref.documentID,"totalAmount":total,"dateTime":Date(),"status":1]) { (error) in
+            ref.setData(["userId":userId,"docid": ref.documentID,"totalAmount":total,"dateTime":Date(),"status":1,"showinorder":1]) { (error) in
             if error != nil
             {
              

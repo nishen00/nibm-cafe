@@ -40,7 +40,7 @@ class ordercontroller: UIViewController {
         }
         
         let docRef = db.collection("order")
-        docRef.whereField("userId", isEqualTo: userId).getDocuments { (snapshot, error) in
+        docRef.whereField("userId", isEqualTo: userId).whereField("showinorder", isEqualTo:1).getDocuments { (snapshot, error) in
             if error != nil
             {
                 print("error")
@@ -166,6 +166,19 @@ class ordercontroller: UIViewController {
         
         
         let orderid = content.viewWithTag(sender.view!.tag + 10) as! UILabel
+        
+        let updateshowstatus = db.collection("order").document(orderid.text!)
+        
+        updateshowstatus.updateData(["showinorder":0]) { (error) in
+            if error != nil
+            {
+               print("error")
+            }
+            else 
+            {
+                print("updated")
+            }
+        }
         
         let barViewControllers = self.tabBarController?.viewControllers
         let svc = barViewControllers![2] as! AccountController

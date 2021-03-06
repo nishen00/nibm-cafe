@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -279,28 +280,50 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U6X-de-HdX">
                                 <rect key="frame" x="10" y="49" width="394" height="172"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="lvm-nB-USW">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lvm-nB-USW">
                                         <rect key="frame" x="8" y="21" width="130" height="130"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="130" id="27z-yX-NZJ"/>
                                             <constraint firstAttribute="height" constant="130" id="x32-Sw-BTh"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdy-co-TaZ">
-                                        <rect key="frame" x="168" y="35" width="216" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                        <color key="textColor" red="0.31764706970000001" green="0.32156863810000003" blue="0.32156863810000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N5g-hr-COr">
+                                        <rect key="frame" x="168" y="32" width="216" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JAm-6k-cEr">
+                                        <rect key="frame" x="168" y="78" width="216" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R48-N3-Puk">
+                                        <rect key="frame" x="168" y="121" width="216" height="32"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                        <state key="normal" title="Upload Photo">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="uploadbtnhit:" destination="BDo-dm-zOh" eventType="touchUpInside" id="QkN-2C-gMK"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Rdy-co-TaZ" secondAttribute="trailing" constant="10" id="33m-qZ-jJA"/>
-                                    <constraint firstItem="Rdy-co-TaZ" firstAttribute="top" secondItem="U6X-de-HdX" secondAttribute="top" constant="35" id="YyU-dY-scp"/>
+                                    <constraint firstAttribute="trailing" secondItem="JAm-6k-cEr" secondAttribute="trailing" constant="10" id="5VJ-Ns-GRQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="R48-N3-Puk" secondAttribute="trailing" constant="10" id="5aO-PN-K5i"/>
+                                    <constraint firstItem="R48-N3-Puk" firstAttribute="top" secondItem="JAm-6k-cEr" secondAttribute="bottom" constant="9" id="8B5-lw-zfr"/>
+                                    <constraint firstItem="N5g-hr-COr" firstAttribute="top" secondItem="U6X-de-HdX" secondAttribute="top" constant="32" id="J7g-ae-o59"/>
+                                    <constraint firstItem="JAm-6k-cEr" firstAttribute="top" secondItem="N5g-hr-COr" secondAttribute="bottom" constant="12" id="QZ4-pl-zwB"/>
                                     <constraint firstItem="lvm-nB-USW" firstAttribute="centerY" secondItem="U6X-de-HdX" secondAttribute="centerY" id="bNY-U1-jLm"/>
-                                    <constraint firstItem="Rdy-co-TaZ" firstAttribute="leading" secondItem="lvm-nB-USW" secondAttribute="trailing" constant="30" id="cHq-F7-uke"/>
+                                    <constraint firstItem="JAm-6k-cEr" firstAttribute="leading" secondItem="lvm-nB-USW" secondAttribute="trailing" constant="30" id="cud-bJ-JkX"/>
                                     <constraint firstAttribute="height" constant="172" id="pNN-1F-YsR"/>
+                                    <constraint firstAttribute="trailing" secondItem="N5g-hr-COr" secondAttribute="trailing" constant="10" id="sXx-Rk-h4u"/>
+                                    <constraint firstItem="R48-N3-Puk" firstAttribute="leading" secondItem="lvm-nB-USW" secondAttribute="trailing" constant="30" id="tKh-zR-dBE"/>
                                     <constraint firstItem="lvm-nB-USW" firstAttribute="leading" secondItem="U6X-de-HdX" secondAttribute="leading" constant="8" id="wKt-G0-A4k"/>
+                                    <constraint firstItem="N5g-hr-COr" firstAttribute="leading" secondItem="lvm-nB-USW" secondAttribute="trailing" constant="30" id="z8R-Uw-1lx"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzF-g3-Yrr">
@@ -322,9 +345,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="ACCOUNT" id="mqA-q2-CJM"/>
                     <connections>
+                        <outlet property="contact" destination="JAm-6k-cEr" id="mn5-Yd-d0N"/>
                         <outlet property="orderdetails" destination="fzF-g3-Yrr" id="sES-0f-JOF"/>
-                        <outlet property="userName" destination="Rdy-co-TaZ" id="elI-Bj-42e"/>
-                        <outlet property="userdetailview" destination="U6X-de-HdX" id="KKS-cv-mXQ"/>
+                        <outlet property="userName" destination="N5g-hr-COr" id="bT4-uj-Yn4"/>
+                        <outlet property="userdetailview" destination="U6X-de-HdX" id="58s-ne-TJw"/>
                         <outlet property="userimage" destination="lvm-nB-USW" id="xu6-jf-dZS"/>
                     </connections>
                 </viewController>
@@ -681,6 +705,9 @@
     </scenes>
     <resources>
         <image name="Logo" width="48" height="48"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

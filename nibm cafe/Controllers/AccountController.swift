@@ -8,27 +8,46 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import FirebaseStorage
 
-class AccountController: UIViewController {
+class AccountController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
     
     var orderId : String = ""
     let db = Firestore.firestore()
+    var userid : String = ""
+    private let storage = Storage.storage().reference()
+    
     
     @IBOutlet weak var userdetailview: UIView!
     
     @IBOutlet weak var userimage: UIImageView!
     
+    @IBOutlet weak var editpro: UIView!
     
-    @IBOutlet weak var userName: UILabel!
+ 
+    @IBOutlet weak var userName: UITextField!
     
     
-    @IBOutlet weak var contact: UILabel!
+    @IBOutlet weak var contact: UITextField!
     
+   
+    
+ 
     @IBOutlet weak var orderdetails: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.userimage.image = #imageLiteral(resourceName: "images")
+        userName.tag = 10000
+        contact.tag = 20000
+        
+        
+        userName.delegate = self
+        contact.delegate = self
+     
+       
         
         userdetailview.layer.borderWidth = 1.0
         userdetailview.layer.borderColor = UIColor.darkGray.cgColor
@@ -53,12 +72,113 @@ class AccountController: UIViewController {
         userimage.layer.cornerRadius = userimage.frame.size.height/2
         userimage.clipsToBounds = true
         
-        let user = Auth.auth().currentUser
+       
         
-        userName.text = String((user?.email)!)
+        
 
         // Do any additional setup after loading the view.
     }
+    
+   
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+   
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let userref2 = self.db.collection("User")
+        if textField.tag == 10000
+        {
+            if userName.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+            {
+                userName.text = Auth.auth().currentUser?.email
+            }
+            else
+            {
+                let email = userName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                
+                Auth.auth().currentUser?.updateEmail(to: email, completion: { (error) in
+                    if error != nil
+                    {
+                        print("error")
+                    }
+                    else
+                    {
+                        
+                        userref2.whereField("UID", isEqualTo: self.userid).getDocuments { (snap, error) in
+                            if error != nil
+                            {
+                                print("faile")
+                            }
+                            else
+                            {
+                                for elements in (snap?.documents)! {
+                                    let data = elements.documentID
+                                    
+                                    let updateshowstatus = self.db.collection("User").document(data)
+                                    
+                                    updateshowstatus.updateData(["email":email]) { (error) in
+                                        if error != nil
+                                        {
+                                           print("error")
+                                        }
+                                        else
+                                        {
+                                            print("updated")
+                                        }
+                                    }
+                                    
+                                    
+                                }
+                            }
+                        }
+                       
+                    }
+                })
+                
+             
+              
+            }
+            
+            
+        }
+        else if textField.tag == 20000
+        {
+            if contact.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+            {
+                contact.text = Auth.auth().currentUser?.phoneNumber
+            }
+            else
+            {
+                let phnnumber = contact.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            userref2.whereField("UID", isEqualTo: self.userid).getDocuments { (snapget, error) in
+                if error != nil{
+                    print("error")
+                }
+                else
+                {
+                    for element in (snapget?.documents)! {
+                        let dataget = element.documentID
+                        
+                        let updateshowstatus = self.db.collection("User").document(dataget)
+                        
+                        updateshowstatus.updateData(["phone":phnnumber]) { (error) in
+                            if error != nil
+                            {
+                               print("error")
+                            }
+                            else
+                            {
+                                print("updated phone")
+                            }
+                        }
+                    }
+                }
+                
+            }
+            }
+        }
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -68,11 +188,69 @@ class AccountController: UIViewController {
             
         }
         
+        let user = Auth.auth().currentUser
+        
+        userid = String(user!.uid)
+        
+        let userref = db.collection("User")
+        
+        userref.whereField("UID", isEqualTo: userid).getDocuments { (usersnap, error) in
+            
+            if error != nil
+            {
+                print("error")
+            }
+            else
+            {
+                let storage = Storage.storage()
+                let storageRef = storage.reference()
+                for element in (usersnap?.documents)!
+                {
+                    let data = element.data()
+                    
+                    self.userName.text = String(data["email"] as! String)
+                    self.contact.text = String(data["phone"] as! String)
+                    
+                    let path = "userimages/" + String(data["image"] as! String)
+                    
+                    let formattedString = path.replacingOccurrences(of: " ", with: "")
+                    
+                    let islandRef = storageRef.child(formattedString)
+                    
+                    islandRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
+                        if error != nil {
+                       print("error")
+                      } else {
+                        // Data for "images/island.jpg" is returned
+                        let image = UIImage(data: data!)
+                        
+                        if image == nil
+                        {
+                            
+                        }
+                        else
+                        {
+                            self.userimage.image = image
+                        }
+                       
+                        
+                
+                      }
+                    }
+                    
+                }
+            }
+            
+        }
+        
+        
+        
+        
         if orderId != ""
         {
         
         var cons : CGFloat = 50
-        let docRef = db.collection("order").document(orderId)
+            let docRef = db.collection("order").document(orderId)
         
         docRef.getDocument { (document, error) in
             if let document = document,document.exists{
@@ -186,6 +364,46 @@ class AccountController: UIViewController {
         
         
         
+    }
+    
+    
+   
+    @IBAction func uploadbtnhit(_ sender: Any) {
+        
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+       present(picker, animated: true)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        guard let imagedata = image.pngData() else {
+            return
+        }
+        let path:String = "userimages/" + userid + ".png"
+        
+            storage.child(path).putData(imagedata, metadata: nil) { (_, Error) in
+            if Error != nil
+            {
+                print("erro")
+            }
+            else
+            {
+                self.userimage.image = UIImage(data: imagedata)
+                
+            }
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
     
 
