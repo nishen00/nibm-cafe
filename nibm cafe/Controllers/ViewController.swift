@@ -74,13 +74,15 @@ class ViewController: UIViewController {
     
     @IBAction func signupHit(_ sender: Any) {
         
+        let phone = phoneNo.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = Email.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let pass = password.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         if validation() != ""
         {
-            let phone = phoneNo.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let email = Email.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let pass = password.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            if email.isEmail
+            
+            if email.isEmail && pass.ispassword && phone.isphone
             {
             
             Auth.auth().createUser(withEmail: email, password: pass) { (result, err) in
@@ -123,6 +125,13 @@ class ViewController: UIViewController {
             }
             else
             {
+                
+                if email.isEmail
+                {
+                    
+                }
+                else
+                {
                 let alert = UIAlertController(title: "Registration failure", message: "Invalid Email", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
                     self.Email.layer.borderWidth = 1.0
@@ -130,6 +139,37 @@ class ViewController: UIViewController {
                      })
                      alert.addAction(ok)
                 self.present(alert, animated: true)
+                }
+                
+                if pass.ispassword
+                {
+                    
+                }
+                else
+                {
+                    let alert = UIAlertController(title: "Registration failure", message: "Password must be Minimum 8 characters at least 1 Alphabet and 1 Number", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+                        self.password.layer.borderWidth = 1.0
+                        self.password.layer.borderColor = UIColor.red.cgColor
+                         })
+                         alert.addAction(ok)
+                    self.present(alert, animated: true)
+                }
+                
+                if phone.isphone
+                {
+                    
+                }
+                else
+                {
+                    let alert = UIAlertController(title: "Registration failure", message: "Invalid Phone number", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+                        self.phoneNo.layer.borderWidth = 1.0
+                        self.phoneNo.layer.borderColor = UIColor.red.cgColor
+                         })
+                         alert.addAction(ok)
+                    self.present(alert, animated: true)
+                }
             }
         }
         else
@@ -151,9 +191,20 @@ extension String {
     private static let __firstpart = "[A-Z0-9a-z]([A-Z0-9a-z._%+-]{0,30}[A-Z0-9a-z])?"
     private static let __serverpart = "([A-Z0-9a-z]([A-Z0-9a-z-]{0,30}[A-Z0-9a-z])?\\.){1,5}"
     private static let __emailRegex = __firstpart + "@" + __serverpart + "[A-Za-z]{2,6}"
-
+    private static let __passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+    private static let __phonenumberRegex = "^[0-9]{10}$"
     public var isEmail: Bool {
         let predicate = NSPredicate(format: "SELF MATCHES %@", type(of:self).__emailRegex)
+        return predicate.evaluate(with: self)
+    }
+    
+    public var ispassword: Bool {
+        let predicate = NSPredicate(format: "SELF MATCHES %@", type(of:self).__passwordRegex)
+        return predicate.evaluate(with: self)
+    }
+    
+    public var isphone: Bool {
+        let predicate = NSPredicate(format: "SELF MATCHES %@", type(of:self).__phonenumberRegex)
         return predicate.evaluate(with: self)
     }
 }

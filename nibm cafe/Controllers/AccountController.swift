@@ -16,6 +16,7 @@ class AccountController: UIViewController, UITextFieldDelegate, UIImagePickerCon
     var orderId : String = ""
     let db = Firestore.firestore()
     var userid : String = ""
+    var contactgloble : String = ""
     private let storage = Storage.storage().reference()
     
     
@@ -94,12 +95,17 @@ class AccountController: UIViewController, UITextFieldDelegate, UIImagePickerCon
             }
             else
             {
+                
                 let email = userName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                
+                if email.isEmail
+                {
                 
                 Auth.auth().currentUser?.updateEmail(to: email, completion: { (error) in
                     if error != nil
                     {
                         print("error")
+                        self.userName.text = Auth.auth().currentUser?.email
                     }
                     else
                     {
@@ -108,6 +114,7 @@ class AccountController: UIViewController, UITextFieldDelegate, UIImagePickerCon
                             if error != nil
                             {
                                 print("faile")
+                                self.userName.text = Auth.auth().currentUser?.email
                             }
                             else
                             {
@@ -120,10 +127,16 @@ class AccountController: UIViewController, UITextFieldDelegate, UIImagePickerCon
                                         if error != nil
                                         {
                                            print("error")
+                                            self.userName.text = Auth.auth().currentUser?.email
                                         }
                                         else
                                         {
-                                            print("updated")
+                                            let alert = UIAlertController(title: "success", message: "Your Username has been updated", preferredStyle: .alert)
+                                            let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+                                              
+                                                 })
+                                                 alert.addAction(ok)
+                                            self.present(alert, animated: true)
                                         }
                                     }
                                     
@@ -135,7 +148,17 @@ class AccountController: UIViewController, UITextFieldDelegate, UIImagePickerCon
                     }
                 })
                 
-             
+                }
+                
+                else
+                {
+                    let alert = UIAlertController(title: "Update failure", message: "Invalid Email", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+                        self.userName.text = Auth.auth().currentUser?.email
+                         })
+                         alert.addAction(ok)
+                    self.present(alert, animated: true)
+                }
               
             }
             
@@ -149,10 +172,15 @@ class AccountController: UIViewController, UITextFieldDelegate, UIImagePickerCon
             }
             else
             {
+                
+                
                 let phnnumber = contact.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                if phnnumber.isphone
+                {
             userref2.whereField("UID", isEqualTo: self.userid).getDocuments { (snapget, error) in
                 if error != nil{
                     print("error")
+                    self.contact.text = self.contactgloble
                 }
                 else
                 {
@@ -164,17 +192,34 @@ class AccountController: UIViewController, UITextFieldDelegate, UIImagePickerCon
                         updateshowstatus.updateData(["phone":phnnumber]) { (error) in
                             if error != nil
                             {
-                               print("error")
+                                self.contact.text = self.contactgloble
                             }
                             else
                             {
-                                print("updated phone")
+                                let alert = UIAlertController(title: "Success", message: "Your phone number has been updated", preferredStyle: .alert)
+                                let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+                                    self.contactgloble = phnnumber
+                                     })
+                                     alert.addAction(ok)
+                                self.present(alert, animated: true)
                             }
                         }
                     }
                 }
                 
             }
+                }
+                
+                else
+                {
+                    let alert = UIAlertController(title: "Update failure", message: "Invalid Contact", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+                        self.contact.text = self.contactgloble
+                         })
+                         alert.addAction(ok)
+                    self.present(alert, animated: true)
+                }
+                //dd
             }
         }
     }
@@ -210,6 +255,7 @@ class AccountController: UIViewController, UITextFieldDelegate, UIImagePickerCon
                     
                     self.userName.text = String(data["email"] as! String)
                     self.contact.text = String(data["phone"] as! String)
+                    self.contactgloble = String(data["phone"] as! String)
                     
                     let path = "userimages/" + String(data["image"] as! String)
                     

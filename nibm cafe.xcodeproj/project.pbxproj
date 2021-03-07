@@ -21,6 +21,7 @@
 		9DE87AA925EF5C5900165F69 /* detailfoodcontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE87AA825EF5C5900165F69 /* detailfoodcontrollerViewController.swift */; };
 		9DF6C2E725F1C7FC00E4BD24 /* ordercontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C2E625F1C7FC00E4BD24 /* ordercontroller.swift */; };
 		9DF6C2EA25F20B3200E4BD24 /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6C2E925F20B3200E4BD24 /* AccountController.swift */; };
+		9DFC17E125F49735006D30CF /* forgetpasswordcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC17E025F49735006D30CF /* forgetpasswordcontroller.swift */; };
 		9DFC8ED925EDFF03004031FF /* tabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC8ED825EDFF03004031FF /* tabBarController.swift */; };
 		9DFC8EDE25EE0078004031FF /* foodsectioncontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC8EDD25EE0078004031FF /* foodsectioncontroller.swift */; };
 		9DFC8EE225EE1C20004031FF /* food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC8EE125EE1C20004031FF /* food.swift */; };
@@ -46,6 +47,7 @@
 		9DE87AA825EF5C5900165F69 /* detailfoodcontrollerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailfoodcontrollerViewController.swift; sourceTree = "<group>"; };
 		9DF6C2E625F1C7FC00E4BD24 /* ordercontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ordercontroller.swift; sourceTree = "<group>"; };
 		9DF6C2E925F20B3200E4BD24 /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
+		9DFC17E025F49735006D30CF /* forgetpasswordcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forgetpasswordcontroller.swift; sourceTree = "<group>"; };
 		9DFC8ED825EDFF03004031FF /* tabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarController.swift; sourceTree = "<group>"; };
 		9DFC8EDD25EE0078004031FF /* foodsectioncontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = foodsectioncontroller.swift; sourceTree = "<group>"; };
 		9DFC8EE125EE1C20004031FF /* food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = food.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				9DE87AA825EF5C5900165F69 /* detailfoodcontrollerViewController.swift */,
 				9DF6C2E625F1C7FC00E4BD24 /* ordercontroller.swift */,
 				9DF6C2E925F20B3200E4BD24 /* AccountController.swift */,
+				9DFC17E025F49735006D30CF /* forgetpasswordcontroller.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				9DB39F3025ECE25900960C57 /* logincontrollerViewController.swift in Sources */,
 				9DFC8EE225EE1C20004031FF /* food.swift in Sources */,
 				9D0287EE25EC8C2400EF835E /* SceneDelegate.swift in Sources */,
+				9DFC17E125F49735006D30CF /* forgetpasswordcontroller.swift in Sources */,
 				9DB39F3325ECF20700960C57 /* homeController.swift in Sources */,
 				9DE87AA925EF5C5900165F69 /* detailfoodcontrollerViewController.swift in Sources */,
 				9DF6C2EA25F20B3200E4BD24 /* AccountController.swift in Sources */,
