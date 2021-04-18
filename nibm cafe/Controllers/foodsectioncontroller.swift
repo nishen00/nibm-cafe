@@ -457,7 +457,7 @@ extension foodsectioncontroller : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
 
-        
+        print(food.count)
         
         
         return food.count

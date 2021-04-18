@@ -42,13 +42,13 @@ class tablecellcontrollerTableViewCell: UITableViewCell {
         let storage = Storage.storage()
         let storageRef = storage.reference()
         
-        let path = "foodimages/"+food.id+".jpg"
+        let path = "foodimages/"+food.id+".png"
         
        
         let formattedString = path.replacingOccurrences(of: " ", with: "")
         let islandRef = storageRef.child(formattedString)
         
-        islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+        islandRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
             if error != nil {
            print("error")
           } else {
