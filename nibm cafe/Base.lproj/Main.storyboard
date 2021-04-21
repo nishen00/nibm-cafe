@@ -23,30 +23,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="oFU-fF-YCA">
-                                <rect key="frame" x="132" y="136" width="150" height="150"/>
+                                <rect key="frame" x="132" y="180" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="WeY-Hk-VJL"/>
                                     <constraint firstAttribute="height" constant="150" id="wmc-Bl-w5y"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jWJ-Nl-wX4">
-                                <rect key="frame" x="0.0" y="306" width="414" height="556"/>
+                                <rect key="frame" x="0.0" y="350" width="414" height="512"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQM-gw-jVi">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="278"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="256"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gTt-Bp-MA4">
-                                                <rect key="frame" x="25" y="0.0" width="364" height="82.5"/>
+                                                <rect key="frame" x="25" y="0.0" width="364" height="75.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iNa-Fy-MHM">
-                                                <rect key="frame" x="25" y="92.5" width="364" height="83"/>
+                                                <rect key="frame" x="25" y="85.5" width="364" height="75"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jpv-L5-7nX">
-                                                <rect key="frame" x="25" y="185.5" width="364" height="82.5"/>
+                                                <rect key="frame" x="25" y="170.5" width="364" height="75.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
@@ -70,7 +70,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHK-xB-J03">
-                                        <rect key="frame" x="0.0" y="278" width="414" height="278"/>
+                                        <rect key="frame" x="0.0" y="256" width="414" height="256"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSb-yh-SjU">
                                                 <rect key="frame" x="157" y="30" width="100" height="30"/>
@@ -162,7 +162,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xus-NZ-88M">
-                                <rect key="frame" x="10" y="131" width="394" height="40"/>
+                                <rect key="frame" x="10" y="175" width="394" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="hyW-PG-FEX"/>
                                 </constraints>
@@ -174,7 +174,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYY-WJ-3zn">
-                                <rect key="frame" x="140" y="211" width="134" height="33"/>
+                                <rect key="frame" x="140" y="255" width="134" height="33"/>
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="134" id="iVG-Kh-GTO"/>
@@ -768,9 +768,10 @@
         <!--Navigation Controller-->
         <scene sceneID="R5f-oy-fsr">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="wLu-Bz-OJB" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="wLu-Bz-OJB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hoG-Cb-9dm">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

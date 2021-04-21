@@ -70,13 +70,12 @@ class ordercontroller: UIViewController {
                     viewDemo.layer.shadowOffset = CGSize.zero
                     viewDemo.layer.shadowRadius = 6
                     viewDemo.layer.borderColor = UIColor.lightGray.cgColor
-                    if statusget == 1
-                    {
+                    
                     let uiviewclick = UITapGestureRecognizer(target: self, action: #selector (self.viewclickset(_:) ))
                     uiviewclick.view?.tag = count
                     
                     viewDemo.addGestureRecognizer(uiviewclick)
-                    }
+                    
                     self.content.addSubview(viewDemo)
                   viewDemo.translatesAutoresizingMaskIntoConstraints = false
                     viewDemo.topAnchor.constraint(equalTo: self.content.topAnchor, constant: cons).isActive = true
@@ -119,17 +118,22 @@ class ordercontroller: UIViewController {
 
                     if  statusget == 1
                     {
-                    status.text = "Ready To Pick Up"
+                    status.text = "Waiting for Approvment"
                         status.textColor = .green
                     }
                     else if statusget == 2
                     {
-                    status.text = "Waiting to accept"
+                    status.text = "Accepted"
                         status.textColor = UIColor.darkGray
                     }
                     else if statusget == 3
                     {
                         status.text = "Preparing Food"
+                        status.textColor = UIColor.darkGray
+                    }
+                    else if statusget == 4
+                    {
+                        status.text = "Ready"
                         status.textColor = UIColor.darkGray
                     }
                     viewDemo.addSubview(status)
@@ -167,18 +171,18 @@ class ordercontroller: UIViewController {
         
         let orderid = content.viewWithTag(sender.view!.tag + 10) as! UILabel
         
-        let updateshowstatus = db.collection("order").document(orderid.text!)
-        
-        updateshowstatus.updateData(["showinorder":0]) { (error) in
-            if error != nil
-            {
-               print("error")
-            }
-            else 
-            {
-                print("updated")
-            }
-        }
+//        let updateshowstatus = db.collection("order").document(orderid.text!)
+//
+//        updateshowstatus.updateData(["showinorder":0]) { (error) in
+//            if error != nil
+//            {
+//               print("error")
+//            }
+//            else
+//            {
+//                print("updated")
+//            }
+//        }
         
         let barViewControllers = self.tabBarController?.viewControllers
         let svc = barViewControllers![2] as! AccountController

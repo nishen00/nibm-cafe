@@ -29,7 +29,7 @@ class foodsectioncontroller: UIViewController {
     var userId :String = ""
     
     let db = Firestore.firestore()
-   
+    var userphone : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +54,49 @@ class foodsectioncontroller: UIViewController {
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    func getuserphone(){
+        
+        
+        let docorderdtl = self.db.collection("User")
+        let user = Auth.auth().currentUser
+        let UID : String = (user?.uid)!
+        
+        docorderdtl.whereField("UID", isEqualTo: UID).getDocuments { (snap, error) in
+            
+            if error != nil
+            {
+                print("error")
+            }
+            else
+            {
+                for element in (snap?.documents)! {
+                    let data = element.data()
+                    self.userphone = data["phone"] as! String
+                    
+                    
+                }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            
+                
+                
+                
+                
+            }
+        }
+            
+        
+        
+        
     }
     
     func cartsection(){
@@ -277,6 +320,7 @@ class foodsectioncontroller: UIViewController {
 
     
     override func viewWillAppear(_ animated: Bool) {
+        getuserphone()
         food.removeAll()
         let docRef = db.collection("Food")
         docRef.getDocuments { (snapshot, error) in
@@ -333,10 +377,13 @@ class foodsectioncontroller: UIViewController {
       
         let ref =  db.collection("order").document()
         
+            let user = Auth.auth().currentUser
+            let email : String = (user?.email)!
+            let randomInt = Int.random(in: 0..<6)
             
             
         
-            ref.setData(["userId":userId,"docid": ref.documentID,"totalAmount":total,"dateTime":Date(),"status":1,"showinorder":1]) { (error) in
+            ref.setData(["userId":userId,"docid": ref.documentID,"totalAmount":total,"dateTime":Date(),"status":1,"showinorder":1,"section":"1","cusname":email,"cusphone":userphone,"orderNo":String(randomInt)]) { (error) in
             if error != nil
             {
              
@@ -347,7 +394,7 @@ class foodsectioncontroller: UIViewController {
                 for element in self.cart
                {
                     let ref2 =  db.collection("orderdtl").document()
-                    ref2.setData(["itemcode":element.documentId,"qty":element.qty,"singleprice":element.singleprice,"userid":element.userId,"orderid":ref.documentID,"selfdocid": ref2.documentID,"Name":element.Name,"date": Date()]) { (err) in
+                    ref2.setData(["itemcode":element.documentId,"qty":element.qty,"singleprice":element.singleprice,"userid":element.userId,"orderid":ref.documentID,"selfdocid": ref2.documentID,"Name":element.Name,"datetime": Date()]) { (err) in
                         if err != nil{
                             
                         }
