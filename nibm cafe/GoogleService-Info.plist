@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>182944915259-qo37j2so406e6hjdj9fjr4eeqbgeaveg.apps.googleusercontent.com</string>
+	<string>135960747007-65ai14mt85r0bsjh3202qjku1rb5b1gt.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.182944915259-qo37j2so406e6hjdj9fjr4eeqbgeaveg</string>
+	<string>com.googleusercontent.apps.135960747007-65ai14mt85r0bsjh3202qjku1rb5b1gt</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAmxgQumeojsfGai5rNv_PUKEujjuCbVDw</string>
+	<string>AIzaSyBZTsYxPJ3adqf2XfcMD9unpT1LUpmoONg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>182944915259</string>
+	<string>135960747007</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>nishen.nibm-cafe</string>
 	<key>PROJECT_ID</key>
-	<string>cafenibm-bbd58</string>
+	<string>cafe-nibm-97050</string>
 	<key>STORAGE_BUCKET</key>
-	<string>cafenibm-bbd58.appspot.com</string>
+	<string>cafe-nibm-97050.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:182944915259:ios:8c72e8b8a13456245d611e</string>
+	<string>1:135960747007:ios:1c429c009e96478ae065ca</string>
 </dict>
 </plist>

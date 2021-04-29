@@ -15,7 +15,7 @@
 		9D0287F325EC8C2400EF835E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D0287F125EC8C2400EF835E /* Main.storyboard */; };
 		9D0287F525EC8C2400EF835E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D0287F425EC8C2400EF835E /* Assets.xcassets */; };
 		9D0287F825EC8C2400EF835E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D0287F625EC8C2400EF835E /* LaunchScreen.storyboard */; };
-		9D02880625ECB94000EF835E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D02880525ECB94000EF835E /* GoogleService-Info.plist */; };
+		9D4D5EFA263A5D54008832A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D4D5EF9263A5D54008832A6 /* GoogleService-Info.plist */; };
 		9DB39F3025ECE25900960C57 /* logincontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB39F2F25ECE25900960C57 /* logincontrollerViewController.swift */; };
 		9DB39F3325ECF20700960C57 /* homeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB39F3225ECF20700960C57 /* homeController.swift */; };
 		9DE87AA925EF5C5900165F69 /* detailfoodcontrollerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE87AA825EF5C5900165F69 /* detailfoodcontrollerViewController.swift */; };
@@ -41,7 +41,7 @@
 		9D0287F425EC8C2400EF835E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D0287F725EC8C2400EF835E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D0287F925EC8C2400EF835E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D02880525ECB94000EF835E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9D4D5EF9263A5D54008832A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9DB39F2F25ECE25900960C57 /* logincontrollerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logincontrollerViewController.swift; sourceTree = "<group>"; };
 		9DB39F3225ECF20700960C57 /* homeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeController.swift; sourceTree = "<group>"; };
 		9DE87AA825EF5C5900165F69 /* detailfoodcontrollerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailfoodcontrollerViewController.swift; sourceTree = "<group>"; };
@@ -111,8 +111,8 @@
 				9D0287F125EC8C2400EF835E /* Main.storyboard */,
 				9D0287F425EC8C2400EF835E /* Assets.xcassets */,
 				9D0287F625EC8C2400EF835E /* LaunchScreen.storyboard */,
-				9D02880525ECB94000EF835E /* GoogleService-Info.plist */,
 				9D0287F925EC8C2400EF835E /* Info.plist */,
+				9D4D5EF9263A5D54008832A6 /* GoogleService-Info.plist */,
 			);
 			path = "nibm cafe";
 			sourceTree = "<group>";
@@ -203,7 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D0287F825EC8C2400EF835E /* LaunchScreen.storyboard in Resources */,
-				9D02880625ECB94000EF835E /* GoogleService-Info.plist in Resources */,
+				9D4D5EFA263A5D54008832A6 /* GoogleService-Info.plist in Resources */,
 				9D0287F525EC8C2400EF835E /* Assets.xcassets in Resources */,
 				9D0287F325EC8C2400EF835E /* Main.storyboard in Resources */,
 			);
